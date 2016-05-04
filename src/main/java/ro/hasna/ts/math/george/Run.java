@@ -1,7 +1,5 @@
 package ro.hasna.ts.math.george;
 
-import java.util.ArrayList;
-
 /**
  * Created by George on 5/3/2016.
  */
@@ -11,10 +9,7 @@ public class Run {
         int horizontalSegments = 16;
         int alphabetSize = 16;
 
-        initWords(alphabetSize, wordSize);
-        for(String s : Constant.words) {
-            System.out.println(s);
-        }
+
 
         double[] values = new double[50];
         values[0] = 1.0;
@@ -41,20 +36,5 @@ public class Run {
         SaxRepresentation sr = new SaxRepresentation(wordSize, horizontalSegments, alphabetSize);
 
         sr.transform(values);
-    }
-
-    private static void initWords(int alphabetSize, int wordSize) {
-        ArrayList<String> words = new ArrayList<String>();
-        StringBuilder sb = new StringBuilder(wordSize);
-        int combinations =(int) Math.pow(alphabetSize * 1.0, wordSize * 1.0);
-//        System.out.print(alphabetSize);
-        for(int i = 0; i < combinations; i++) {
-            sb.setLength(0);
-            for(int j = 0, i2 = i; j < wordSize; j++, i2 /= alphabetSize)
-                sb.insert(0, (char)('a' + i2 % alphabetSize));
-            words.add(sb.toString());
-        }
-
-        Constant.words = words;
     }
 }

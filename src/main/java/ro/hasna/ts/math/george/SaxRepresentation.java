@@ -56,13 +56,7 @@ public class SaxRepresentation implements GenericTransformer<double[], Map<Strin
             searchedWord.append(resString.charAt(i));
         }
 
-//        ArrayList<String> words = Constant.words;
-//        for(String s : words) {
-//            int occurences = countOccurences(resString, s);
-//            if (occurences != 0) {
-//                resMap.put(s, occurences);
-//            }
-//        }
+
         System.out.println("reprezentarea sub forma de caractere:");
         System.out.println(resString);
         System.out.println("reprezentarea sub forma de HashMap:");
