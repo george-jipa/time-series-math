@@ -42,9 +42,14 @@ public class SaxRepresentation implements GenericTransformer<double[], Map<Strin
         for (int i = 0; i < wordSize; i++) {
             searchedWord.append(resString.charAt(i));
         }
+
         Map<String, Integer> resMap = new HashMap<String, Integer>();
+        //first pair<word, occurences> inserted in hashmap
+        resMap.put(searchedWord.toString(),1);
 
         for (int i = wordSize; i < resString.length(); i++) {
+            searchedWord.deleteCharAt(0);
+            searchedWord.append(resString.charAt(i));
 
             Integer count = resMap.get(searchedWord.toString());
             if (count==null){
@@ -52,8 +57,6 @@ public class SaxRepresentation implements GenericTransformer<double[], Map<Strin
             }
             count++;
             resMap.put(searchedWord.toString(),count);
-            searchedWord.deleteCharAt(0);
-            searchedWord.append(resString.charAt(i));
         }
 
 
