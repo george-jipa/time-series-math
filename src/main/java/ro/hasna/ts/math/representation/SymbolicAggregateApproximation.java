@@ -82,24 +82,24 @@ public class SymbolicAggregateApproximation implements GenericTransformer<double
     public int[] transform(double[] values) {
         double[] copy = paa.transform(values);
 
-        System.out.println("values transformed by PAA");
-
-        for(int i = 0; i < copy.length; i++) {
-            System.out.print(copy[i] + " ");
-        }
-        System.out.println();
+//        System.out.println("values transformed by PAA");
+//
+//        for(int i = 0; i < copy.length; i++) {
+//            System.out.print(copy[i] + " ");
+//        }
+//        System.out.println();
         // NOTE: mathematically the order of PAA and normalisation doesn't matter, the result is the same,
         // but comparing the speed, running PAA and then normalisation is faster than in the reverse order
         if (normalizer != null) {
             copy = normalizer.normalize(copy);
         }
 
-        System.out.println("values transformed by Normalizer");
-
-        for(int i = 0; i < copy.length; i++) {
-            System.out.print(copy[i] + " ");
-        }
-        System.out.println();
+//        System.out.println("values transformed by Normalizer");
+//
+//        for(int i = 0; i < copy.length; i++) {
+//            System.out.print(copy[i] + " ");
+//        }
+//        System.out.println();
 
         int n = 0;
         int[] result = new int[copy.length];
