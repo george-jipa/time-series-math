@@ -22,6 +22,7 @@ public class Run {
         int wordSize = 2;
         int horizontalSegments = 16;
         int alphabetSize = 16;
+        int periodsPerSample = 3;
 
         MeasurementFlow flow = new MeasurementFlow();
 
@@ -29,28 +30,6 @@ public class Run {
 //            flow.readData("data_sets_input", i, "data_sets_output");
         }
 
-
-        double[] values = new double[50];
-        values[0] = 1.0;
-        values[1] = 2.0;
-        values[2] = 4.1;
-        values[3] = 10.0;
-        values[4] = 0.0;
-        values[5] = 1.1;
-        values[6] = 3.0;
-        values[7] = 2.0;
-        values[8] = 0.1;
-        values[9] = 3.5;
-        values[10] = 1.0;
-        values[11] = 2.0;
-        values[12] = 4.1;
-        values[13] = 10.0;
-        values[14] = 0.0;
-        values[15] = 1.1;
-        values[16] = 3.0;
-        values[17] = 2.0;
-        values[18] = 0.1;
-        values[19] = 3.5;
 
         SaxRepresentation sr = new SaxRepresentation(wordSize, horizontalSegments, alphabetSize);
 
@@ -81,7 +60,7 @@ public class Run {
 
         for (String caseName : cases) {
             for(String state : states) {
-                List<String> lines = Files.readAllLines(Paths.get("data_sets_output/"+ caseName + "/3p_" + state + ".txt"));
+                List<String> lines = Files.readAllLines(Paths.get("data_sets_output/"+ caseName + "/" + periodsPerSample + "p_" + state + ".txt"));
 //                System.out.println("data_sets_output/"+ caseName + "/3p_" + state + ".txt");
 
                 for(String line : lines) {
@@ -109,14 +88,12 @@ public class Run {
             Instance best = train.get(0);
             double dist = smed.compute(best.getHashMap(), testInstance.getHashMap());
             for(Instance trainInstance : train) {
-                double currentDist = smed.compute(best.getHashMap(), trainInstance.getHashMap());
-                System.out.println(currentDist);
+                double currentDist = smed.compute(testInstance.getHashMap(), trainInstance.getHashMap());
                 if (currentDist < dist) {
                     best = trainInstance;
                     dist = currentDist;
                 }
             }
-
             if (best.getClassLabel().equals(testInstance.getClassLabel())) {
                 matches++;
             }
