@@ -11,7 +11,11 @@ public class Instance {
 
     public Instance(Map<String, Integer> hashMap, String classLabel) {
         this.hashMap = hashMap;
-        this.classLabel = classLabel;
+        if (classLabel.equals("n1") || classLabel.equals("n2") || classLabel.equals("n3")) {
+            this.classLabel = "n";
+        } else {
+            this.classLabel = classLabel;
+        }
     }
 
     public Map<String, Integer> getHashMap() {
