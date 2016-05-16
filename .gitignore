@@ -19,3 +19,7 @@ target/
 ## Data Sets
 data_sets_input/
 data_sets_output/
+
+## Test classes
+src/main/java/ro/hasna/ts/math/george/MeasurementFlow.java
+src/main/java/ro/hasna/ts/math/george/Run.java
