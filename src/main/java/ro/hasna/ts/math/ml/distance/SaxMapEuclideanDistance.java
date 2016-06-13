@@ -13,7 +13,10 @@ public class SaxMapEuclideanDistance implements GenericDistanceMeasure<Map<Strin
 
     @Override
     public double compute(Map<String, Integer> a, Map<String, Integer> b) {
-
+        System.out.println("multimea A:");
+        System.out.println(a.toString());
+        System.out.println("multimea B:");
+        System.out.println(b.toString());
         Map<String, Integer> differenceAB = clone(a);
         Map<String, Integer> differenceBA = clone(b);
 
@@ -25,12 +28,19 @@ public class SaxMapEuclideanDistance implements GenericDistanceMeasure<Map<Strin
                 difference += (FastMath.pow(valueFromA - valueFromB, 2));
             }
         }
+        System.out.println(difference);
+        System.out.println("multimea A\\B:");
+        System.out.println(differenceAB.toString());
+        System.out.println("multimea B\\A:");
+        System.out.println(differenceBA.toString());
         for(Map.Entry<String, Integer> difABelem : differenceAB.entrySet()) {
             difference += FastMath.pow(difABelem.getValue(), 2);
         }
-        for(Map.Entry<String, Integer> difBAelem : differenceAB.entrySet()) {
+        for(Map.Entry<String, Integer> difBAelem : differenceBA.entrySet()) {
             difference += FastMath.pow(difBAelem.getValue(), 2);
         }
+        System.out.println(difference);
+        System.exit(-1);
         return difference * 1.0;
     }
 
